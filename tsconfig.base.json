@@ -20,6 +20,9 @@
     "paths": {
       "@simple-jira/domain": [
         "libs/domain/src/index.ts"
+      ],
+      "@simple-jira/project": [
+        "libs/project/src/index.ts"
       ]
     }
   },

@@ -30,6 +30,9 @@
   "projects": {
     "domain": {
       "tags": []
+    },
+    "project": {
+      "tags": []
     }
   }
 }
