@@ -1,1 +1,33 @@
-{"version":2,"projects":{"domain":{"root":"libs/domain","sourceRoot":"libs/domain/src","projectType":"library","targets":{"lint":{"executor":"@nrwl/linter:eslint","options":{"lintFilePatterns":["libs/domain/**/*.ts"]}},"test":{"executor":"@nrwl/jest:jest","outputs":["coverage/libs/domain"],"options":{"jestConfig":"libs/domain/jest.config.js","passWithNoTests":true}}}}},"cli":{"defaultCollection":"@nrwl/workspace"}}
+{
+  "version": 2,
+  "projects": {
+    "domain": {
+      "root": "libs/domain",
+      "sourceRoot": "libs/domain/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/domain/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/domain"
+          ],
+          "options": {
+            "jestConfig": "libs/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
