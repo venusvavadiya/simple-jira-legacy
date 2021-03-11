@@ -2,9 +2,7 @@ import { Event } from './event';
 
 export abstract class Aggregate {
   id: string;
-
   changes: Event[];
-
   version = 0;
 
   applyEvent(event: Event, isCommited = false) {
