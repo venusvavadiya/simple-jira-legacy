@@ -15,5 +15,6 @@ export class Repository<T extends Aggregate> {
     aggregate.changes.forEach((event, index) => {
       this.store.append(aggregate.id, event, version + index);
     });
+    aggregate.markAsCommited();
   }
 }
