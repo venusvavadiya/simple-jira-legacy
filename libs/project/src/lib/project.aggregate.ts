@@ -8,7 +8,7 @@ export class Project extends Aggregate {
     this.applyEvent(projectCreated);
   }
 
-  applyProjectCreatedV1(event: ProjectCreatedV1) {
+  private applyProjectCreatedV1(event: ProjectCreatedV1) {
     this.id = event.projectId;
   }
 }
