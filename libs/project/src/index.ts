@@ -1,2 +1,2 @@
-export * from './lib/project.aggregate';
-export * from './lib/project.repository';
+export * from './domain/project.aggregate';
+export * from './domain/project.repository';
