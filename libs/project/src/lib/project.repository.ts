@@ -1,4 +1,4 @@
 import { Repository } from '@simple-jira/domain';
-import { Project } from './project.aggregate';
+import { ProjectAggregate } from './project.aggregate';
 
-export class ProjectRepository extends Repository<Project> {}
+export class ProjectRepository extends Repository<ProjectAggregate> {}

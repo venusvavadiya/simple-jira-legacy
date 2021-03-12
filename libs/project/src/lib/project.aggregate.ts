@@ -1,7 +1,7 @@
 import { Aggregate } from '@simple-jira/domain';
 import { ProjectCreatedV1, ProjectRenamedV1 } from './events';
 
-export class Project extends Aggregate {
+export class ProjectAggregate extends Aggregate {
   id: string;
   name: string;
 
