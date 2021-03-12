@@ -1,7 +1,7 @@
 import { Aggregate } from './aggregate';
 import { EventStore } from './event-store';
 
-export class Repositoy<T extends Aggregate> {
+export class Repository<T extends Aggregate> {
   readonly store: EventStore;
 
   async getById(id: string): Promise<T> {
