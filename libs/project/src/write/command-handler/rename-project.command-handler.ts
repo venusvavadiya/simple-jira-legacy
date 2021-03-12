@@ -12,6 +12,6 @@ export class RenameProjectCommandHandler {
   async handle(command: RenameProjectCommand) {
     const projectAggregate = await this.projectRepository.getById(command.projectId);
     projectAggregate.rename(command.name);
-    this.projectRepository.save(projectAggregate);
+    this.projectRepository.save(projectAggregate, command.version);
   }
 }

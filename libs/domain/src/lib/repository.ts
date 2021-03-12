@@ -11,10 +11,8 @@ export class Repository<T extends Aggregate> {
     return instance;
   }
 
-  save(aggregate: T, version = 0) {
-    aggregate.changes.forEach((event, index) => {
-      this.store.append(aggregate.id, event, version + index);
-    });
+  async save(aggregate: T, version): Promise<void> {
+    await this.store.append(aggregate.id, aggregate.changes, version);
     aggregate.markAsCommited();
   }
 }

@@ -10,6 +10,6 @@ export class CreateProjectCommandHandler {
 
   handle(command: CreateProjectCommand) {
     const projectAggregate = new ProjectAggregate(command.projectId);
-    this.projectRepository.save(projectAggregate);
+    this.projectRepository.save(projectAggregate, 0);
   }
 }
