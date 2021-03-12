@@ -12,7 +12,7 @@ export class ProjectAggregate extends Aggregate {
   }
 
   rename(name: string) {
-    const projectRenamed = new ProjectRenamedV1(name);
+    const projectRenamed = new ProjectRenamedV1(this.id, name);
     this.applyEvent(projectRenamed);
   }
 

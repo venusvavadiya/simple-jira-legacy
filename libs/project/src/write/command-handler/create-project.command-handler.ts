@@ -1,5 +1,5 @@
-import { ProjectAggregate } from '../domain/project.aggregate';
-import { ProjectRepository } from '../domain/project.repository';
+import { ProjectAggregate } from '../../domain/project.aggregate';
+import { ProjectRepository } from '../../domain/project.repository';
 
 export interface CreateProjectCommand {
   projectId: string;

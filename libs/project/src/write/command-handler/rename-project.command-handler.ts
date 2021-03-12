@@ -1,4 +1,4 @@
-import { ProjectRepository } from '../domain/project.repository';
+import { ProjectRepository } from '../../domain/project.repository';
 
 export interface RenameProjectCommand {
   projectId: string;
