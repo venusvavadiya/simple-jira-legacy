@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { Aggregate } from '@simple-jira/domain';
 import { ProjectCreatedV1 } from './events';
 

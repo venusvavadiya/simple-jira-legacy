@@ -60,5 +60,12 @@
         "exceptAfterSingleLine": true
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "tsconfig.base.json"
+      }
+    }
   }
 }
