@@ -6,7 +6,7 @@ export class Repository<T extends Aggregate> {
 
   async getById(id: string): Promise<T> {
     const events = await this.store.read(id);
-    const instance = Aggregate.createInstance<T>();
+    const instance = new Aggregate() as T;
     instance.loadFromEvents(events);
     return instance;
   }

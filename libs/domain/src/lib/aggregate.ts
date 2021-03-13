@@ -5,10 +5,6 @@ export class Aggregate {
   changes: Event[];
   version = 0;
 
-  static createInstance<T extends Aggregate>(): T {
-    return new this() as T;
-  }
-
   loadFromEvents(events: Event[]): void {
     events.forEach((event) => {
       this.applyEvent(event, true);
