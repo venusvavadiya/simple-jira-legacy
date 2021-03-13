@@ -7,7 +7,7 @@ export class ProjectCreatedV1EventHandler {
 
   handle(event: ProjectCreatedV1) {
     const { projectId } = event;
-    const projectEntity: ProjectEntity = { id: projectId, version: 0 };
+    const projectEntity: ProjectEntity = { id: projectId };
     this.projectRepository.save(projectEntity);
   }
 }
