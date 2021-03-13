@@ -5,8 +5,11 @@ export class Aggregate {
   changes: Event[];
   version = -1;
 
-  loadFromEvents(events: Event[]): void {
-    events.forEach(this.applyEvent);
+  applyEvent(event: Event): void {
+    const eventName = event.constructor.name;
+    const methodName = `apply${eventName}`;
+    this[methodName](event);
+    this.version += 1;
   }
 
   resetChanges(): void {
@@ -16,12 +19,5 @@ export class Aggregate {
   protected raiseEvent(event: Event): void {
     this.applyEvent(event);
     this.changes.push(event);
-  }
-
-  private applyEvent(event: Event): void {
-    const eventName = event.constructor.name;
-    const methodName = `apply${eventName}`;
-    this[methodName](event);
-    this.version += 1;
   }
 }

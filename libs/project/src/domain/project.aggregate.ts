@@ -8,12 +8,12 @@ export class ProjectAggregate extends Aggregate {
   constructor(id: string) {
     super();
     const projectCreated = new ProjectCreatedV1(id);
-    this.applyEvent(projectCreated);
+    this.raiseEvent(projectCreated);
   }
 
   rename(name: string) {
     const projectRenamed = new ProjectRenamedV1(this.id, name);
-    this.applyEvent(projectRenamed);
+    this.raiseEvent(projectRenamed);
   }
 
   // Events

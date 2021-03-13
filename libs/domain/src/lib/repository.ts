@@ -5,14 +5,15 @@ export class Repository<T extends Aggregate> {
   readonly store: EventStore;
 
   async getById(id: string): Promise<T> {
+    const aggregate = new Aggregate() as T;
     const events = await this.store.read(id);
-    const instance = new Aggregate() as T;
-    instance.loadFromEvents(events);
-    return instance;
+    events.forEach(aggregate.applyEvent);
+    return aggregate;
   }
 
-  async save(aggregate: T, version): Promise<void> {
-    await this.store.append(aggregate.id, aggregate.changes, version);
-    aggregate.markAsCommited();
+  async save(aggregate: T): Promise<void> {
+    const storedVersion = aggregate.version - aggregate.changes.length;
+    await this.store.append(aggregate.id, aggregate.changes, storedVersion);
+    aggregate.resetChanges();
   }
 }
