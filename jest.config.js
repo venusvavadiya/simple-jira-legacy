@@ -1,3 +1,6 @@
 module.exports = {
-  projects: ['<rootDir>/libs/domain'],
+  projects: [
+    '<rootDir>/libs/domain',
+    '<rootDir>/libs/project',
+  ],
 };
