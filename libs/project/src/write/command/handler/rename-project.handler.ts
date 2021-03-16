@@ -1,9 +1,5 @@
-import { ProjectRepository } from '../../domain/project.repository';
-
-export interface RenameProjectCommand {
-  projectId: string;
-  name: string;
-}
+import { ProjectRepository } from '../../repository';
+import { RenameProjectCommand } from '../rename-project.command';
 
 export class RenameProjectCommandHandler {
   constructor(private projectRepository: ProjectRepository) {}

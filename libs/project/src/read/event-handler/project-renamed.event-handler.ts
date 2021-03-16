@@ -1,5 +1,5 @@
-import { ProjectRenamedV1 } from '../../domain/events';
-import { ProjectRepository } from '../repository/ProjectRepository';
+import { ProjectRenamedV1 } from '../../write';
+import { ProjectRepository } from '../repository';
 
 export class ProjectRenamedV1EventHandler {
   constructor(private projectRepository: ProjectRepository) {}

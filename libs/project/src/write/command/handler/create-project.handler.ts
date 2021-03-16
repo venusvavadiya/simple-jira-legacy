@@ -1,9 +1,6 @@
-import { ProjectAggregate } from '../../domain/project.aggregate';
-import { ProjectRepository } from '../../domain/project.repository';
-
-export interface CreateProjectCommand {
-  projectId: string;
-}
+import { ProjectAggregate } from '../../aggregate';
+import { ProjectRepository } from '../../repository';
+import { CreateProjectCommand } from '../create-project.command';
 
 export class CreateProjectCommandHandler {
   constructor(private projectRepository: ProjectRepository) {}

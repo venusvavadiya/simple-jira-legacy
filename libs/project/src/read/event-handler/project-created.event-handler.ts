@@ -1,6 +1,6 @@
-import { ProjectCreatedV1 } from '../../domain/events';
-import { ProjectEntity } from '../entity/project.entity';
-import { ProjectRepository } from '../repository/ProjectRepository';
+import { ProjectCreatedV1 } from '../../write';
+import { ProjectEntity } from '../entity';
+import { ProjectRepository } from '../repository';
 
 export class ProjectCreatedV1EventHandler {
   constructor(private projectRepository: ProjectRepository) {}

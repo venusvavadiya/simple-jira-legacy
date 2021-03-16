@@ -1,2 +1,5 @@
-export * from './command-handler/create-project.command-handler';
-export * from './command-handler/rename-project.command-handler';
+export * from './aggregate';
+export * from './command/handler';
+export * from './command';
+export * from './event';
+export * from './repository';
