@@ -1,4 +1,4 @@
-export * from './aggregate';
+export * from './aggregate/project.aggregate';
 
 export * from './command/handler/create-project.handler';
 export * from './command/handler/rename-project.handler';
