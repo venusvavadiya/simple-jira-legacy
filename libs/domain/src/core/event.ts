@@ -1,3 +1,3 @@
-export abstract class Event {
-  constructor(readonly timestamp: Date) {}
+export interface Event {
+  timestamp: Date;
 }

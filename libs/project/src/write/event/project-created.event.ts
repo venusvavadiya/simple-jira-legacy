@@ -1,10 +1,8 @@
 import { Event } from '@simple-jira/domain';
 
-export class ProjectCreatedV1 extends Event {
+export class ProjectCreatedV1 implements Event {
   constructor(
     readonly projectId: string,
-    timestamp = new Date(),
-  ) {
-    super(timestamp);
-  }
+    readonly timestamp = new Date(),
+  ) {}
 }
