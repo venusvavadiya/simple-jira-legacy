@@ -53,6 +53,6 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/node"
+    "defaultCollection": "@nrwl/nest"
   }
 }
