@@ -2,17 +2,16 @@ import { Aggregate } from '../core/aggregate';
 import { EventStore } from './event-store';
 
 export class Repository<T extends Aggregate> {
-  readonly aggregate: string;
-
   constructor(private readonly store: EventStore) {}
 
+  // eslint-disable-next-line class-methods-use-this
+  getInstance() {
+    return null;
+  }
+
   async getById(id: string): Promise<T> {
-    const aggregate = new Aggregate() as T;
-    const events = await this.store.read(`${this.aggregate}-${id}`);
-    // @ts-ignore
-    const t = events[0].type;
-    console.log('agg', aggregate);
-    console.log(events);
+    const aggregate = this.getInstance();
+    const events = await this.store.read(`${aggregate.constructor.name}-${id}`);
     events.forEach(aggregate.applyEvent);
     return aggregate;
   }
