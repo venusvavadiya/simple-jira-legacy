@@ -1,28 +1,41 @@
 import {
   FORWARDS,
+  jsonEvent,
   NO_STREAM,
   START,
 } from '@eventstore/db-client';
+import { EventStore } from '@simple-jira/domain';
 
-export class EventStoreDBEventStore {
+export function determineVersion(version) {
+  return version === -1 ? NO_STREAM : BigInt(version);
+}
+
+export class EventStoreDBEventStore implements EventStore {
   constructor(private readonly client) {}
 
   async append(stream, events, version) {
-    const expectedRevision = version === -1 ? NO_STREAM : BigInt(version);
+    const expectedRevision = determineVersion(version);
 
     await this.client.appendToStream(
       stream,
-      events,
+      events.map(jsonEvent),
       { expectedRevision },
     );
   }
 
   async read(stream) {
-    const events = await this.client.readStream(stream, {
+    const jsonEvents = await this.client.readStream(stream, {
       direction: FORWARDS,
       fromRevision: START,
     });
 
-    return events;
+    return jsonEvents.map((e) => {
+      console.log(e);
+
+      return {
+        data: e.event.data,
+        type: e.event.type,
+      };
+    });
   }
 }

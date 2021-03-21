@@ -1,25 +1,28 @@
 import { Aggregate } from '../core/aggregate';
 import { EventStore } from './event-store';
 
-export class Repository<T extends Aggregate> {
+export function toJsonEvent(event) {
+  const data = JSON.parse(JSON.stringify(event));
+  const type = event.constructor.name;
+  return { data, type };
+}
+
+export abstract class Repository<T extends Aggregate> {
   constructor(private readonly store: EventStore) {}
 
-  // eslint-disable-next-line class-methods-use-this
-  getInstance() {
-    return null;
-  }
+  abstract getInstance(): T
 
   async getById(id: string): Promise<T> {
     const aggregate = this.getInstance();
     const events = await this.store.read(`${aggregate.constructor.name}-${id}`);
-    events.forEach(aggregate.applyEvent);
+    events.forEach(e => {aggregate.applyEvent(e)});
     return aggregate;
   }
 
   async save(aggregate: T): Promise<void> {
     const stream = `${aggregate.constructor.name}-${aggregate.id}`;
     const storedVersion = aggregate.version - aggregate.changes.length;
-    await this.store.append(stream, aggregate.changes, storedVersion);
+    await this.store.append(stream, aggregate.changes.map(toJsonEvent), storedVersion);
     aggregate.resetChanges();
   }
 }

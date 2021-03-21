@@ -5,8 +5,7 @@ import { ProjectRenamedV1 } from '../event/project-renamed.event';
 export class ProjectAggregate extends Aggregate {
   name: string;
 
-  constructor(id: string) {
-    super();
+  create(id: string) {
     const projectCreated = new ProjectCreatedV1(id);
     this.raiseEvent(projectCreated);
   }

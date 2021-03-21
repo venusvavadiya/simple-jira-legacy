@@ -7,7 +7,8 @@ export class CreateProjectCommandHandler implements CommandHandler<CreateProject
   constructor(private projectRepository: ProjectRepository) {}
 
   async handle(command: CreateProjectCommand): Promise<void> {
-    const projectAggregate = new ProjectAggregate(command.projectId);
+    const projectAggregate = new ProjectAggregate();
+    projectAggregate.create(command.projectId);
     await this.projectRepository.save(projectAggregate);
   }
 }
