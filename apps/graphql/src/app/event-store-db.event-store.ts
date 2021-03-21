@@ -2,7 +2,7 @@ import {
   EventStoreDBClient,
   FORWARDS,
   jsonEvent,
-  JSONType,
+  NO_STREAM,
   START,
 } from '@eventstore/db-client';
 import { Event, EventStore } from '@simple-jira/domain';
@@ -16,8 +16,8 @@ export class EventStoreDbEventStore implements EventStore {
 
   async append(stream: string, events: Event[], version: number): Promise<void> {
     const mapped = events
-      .map((x) => jsonEvent({ type: x.constructor.name, data: x as unknown as JSONType }));
-    await this.client.appendToStream(stream, mapped, { expectedRevision: version });
+      .map((x) => jsonEvent({ type: x.constructor.name, data: JSON.parse(JSON.stringify(x)) }));
+    await this.client.appendToStream(stream, mapped, version === -1 ? NO_STREAM : version);
   }
 
   read(stream) {
