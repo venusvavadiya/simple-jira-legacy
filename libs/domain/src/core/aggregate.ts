@@ -8,6 +8,7 @@ export class Aggregate {
   applyEvent(event: Event): void {
     const eventName = event.constructor.name;
     const methodName = `apply${eventName}`;
+    console.log('this', this);
     this[methodName](event);
     this.version += 1;
   }

@@ -20,10 +20,14 @@ export class EventStoreDbEventStore implements EventStore {
     await this.client.appendToStream(stream, mapped, version === -1 ? NO_STREAM : version);
   }
 
-  read(stream) {
-    return this.client.readStream(stream, {
+  async read(stream) {
+    const events = await this.client.readStream(stream, {
       direction: FORWARDS,
       fromRevision: START,
     });
+
+    console.log(events);
+
+    return events;
   }
 }
