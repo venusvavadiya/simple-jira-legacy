@@ -2,7 +2,7 @@ import { Event } from './event';
 
 export class Aggregate {
   id: string;
-  changes: Event[];
+  changes: Event[] = [];
   version = -1;
 
   applyEvent(event: Event): void {

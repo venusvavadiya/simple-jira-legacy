@@ -2,7 +2,7 @@ import { Aggregate } from '../core/aggregate';
 import { EventStore } from './event-store';
 
 export class Repository<T extends Aggregate> {
-  readonly store: EventStore;
+  constructor(private readonly store: EventStore) {}
 
   async getById(id: string): Promise<T> {
     const aggregate = new Aggregate() as T;
