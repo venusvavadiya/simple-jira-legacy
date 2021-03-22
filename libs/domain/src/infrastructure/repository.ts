@@ -15,7 +15,7 @@ export abstract class Repository<T extends Aggregate> {
   async getById(id: string): Promise<T> {
     const aggregate = this.getInstance();
     const events = await this.store.read(`${aggregate.constructor.name}-${id}`);
-    events.forEach(e => {aggregate.applyEvent(e)});
+    events.forEach((event) => { aggregate.applyEvent(event); });
     return aggregate;
   }
 
