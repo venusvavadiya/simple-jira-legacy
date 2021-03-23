@@ -1,5 +1,5 @@
 import { ProjectCreatedV1 } from '../../write';
-import { ProjectEntity } from '../entity';
+import { ProjectEntity } from '../entity/project.entity';
 import { ProjectRepository } from '../repository';
 
 export class ProjectCreatedV1EventHandler {
